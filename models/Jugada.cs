@@ -36,6 +36,8 @@ namespace ProyectoTecnica.models
             TIRO_A_META, //Ofensiva
             PASES, //Ofensiva
             CENTROS, //Ofensiva
+            TIRO_LIBRE, //Ofensiva
+
             
             POSICIONES_ADELANTADAS //Falta
         }
