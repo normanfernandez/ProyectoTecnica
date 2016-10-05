@@ -39,7 +39,8 @@ namespace ProyectoTecnica.models
             TIRO_LIBRE, //Ofensiva
 
             
-            POSICIONES_ADELANTADAS //Falta
+            POSICIONES_ADELANTADAS, //Falta
+            PENAL //Falta
         }
 
         public enum Criterio { 

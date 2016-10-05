@@ -14,13 +14,20 @@ namespace ProyectoTecnica
 {
     public partial class Form1 : Form
     {
+        int score_visitors = 0; 
+        int score_home = 0; 
+         
         public Form1()
         {
             InitializeComponent();
+            comboBox1.DataSource = Enum.GetValues(typeof(Jugada.Criterio));
+            updatescoreboard();
+            this.radioButton1.Select();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             /*List<Jugada> jugadas = new List<Jugada>();
             jugadas.Add(new Jugada(Jugada.Equipo.HOME,
                 Jugada.ClasificacionJugada.CENTROS,
@@ -34,7 +41,12 @@ namespace ProyectoTecnica
                  Jugada.ClasificacionJugada.SAQUE_DE_META,
                  Jugada.Criterio.JUGADA_OFENSIVA));*/
 
-            JugadaIO.LeerJugadas("jugadas.xml");
+            //JugadaIO.LeerJugadas("jugadas.xml");
+        }
+        void updatescoreboard()
+        {
+            lblhomescore.Text = Convert.ToString(score_home);
+            lblvisitorscore.Text = Convert.ToString(score_visitors);
         }
     }
 }

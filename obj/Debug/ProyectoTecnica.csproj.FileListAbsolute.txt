@@ -1,1 +1,9 @@
 C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\bin\Debug\ProyectoTecnica.exe.config
+C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\bin\Debug\ProyectoTecnica.exe
+C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\bin\Debug\ProyectoTecnica.pdb
+C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.csprojResolveAssemblyReference.cache
+C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.Form1.resources
+C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.Properties.Resources.resources
+C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.csproj.GenerateResource.Cache
+C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.exe
+C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.pdb
