@@ -21,16 +21,12 @@ namespace ProyectoTecnica.models
         }
 
         public enum ClasificacionJugada { 
-            //Despues de falta
-            SAQUE_DE_MANO,
-            TIRO_DE_ESQUINA,
-            TIRO_LIBRE_DIRECTO,
-            TIRO_LIBRE_INDIRECTO,
-            /////////////
+       
             
             ATAJO_DE_BALON, //Defensiva
             ROBO, //Defensiva
             DESPEJES, //Defensiva
+            BLOQUEOS,//Defensiva
 
             SAQUE_DE_META, //Ofensiva
             TIRO_A_META, //Ofensiva
@@ -38,15 +34,22 @@ namespace ProyectoTecnica.models
             CENTROS, //Ofensiva
             TIRO_LIBRE, //Ofensiva
 
-            
+            SAQUE_DE_MANO,
+            TIRO_DE_ESQUINA,
+            TIRO_LIBRE_DIRECTO,
+            TIRO_LIBRE_INDIRECTO,
+            /////////////
+
             POSICIONES_ADELANTADAS, //Falta
-            PENAL //Falta
+            PENAL, //Falta
+            TARJETA_AMARILLA,
+            TARJETA_ROJA
         }
+
 
         public enum Criterio { 
             JUGADA_DEFENSIVA,
             JUGADA_OFENSIVA,
-            ANOTACION,
             FALTA
         }
 

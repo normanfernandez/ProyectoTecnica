@@ -15,8 +15,36 @@ namespace ProyectoTecnica
     public partial class Form1 : Form
     {
         int score_visitors = 0; 
-        int score_home = 0; 
-         
+        int score_home = 0;
+        List<Jugada> jugadas = new List<Jugada>();
+        private static List<Jugada.ClasificacionJugada> ofensiva = new List<Jugada.ClasificacionJugada>
+        {
+            Jugada.ClasificacionJugada.SAQUE_DE_META, //Ofensiva
+            Jugada.ClasificacionJugada.TIRO_A_META, //Ofensiva
+            Jugada.ClasificacionJugada.PASES, //Ofensiva
+            Jugada.ClasificacionJugada.CENTROS, //Ofensiva
+            Jugada.ClasificacionJugada.TIRO_LIBRE, //Ofensiva
+            Jugada.ClasificacionJugada.SAQUE_DE_MANO,//Ofensiva
+            Jugada.ClasificacionJugada.TIRO_DE_ESQUINA,//Ofensiva
+            Jugada.ClasificacionJugada.TIRO_LIBRE_DIRECTO,//Ofensiva
+            Jugada.ClasificacionJugada.TIRO_LIBRE_INDIRECTO//Ofensiva
+
+        };
+        private static List<Jugada.ClasificacionJugada> defensiva = new List<Jugada.ClasificacionJugada>
+        {
+            Jugada.ClasificacionJugada.ATAJO_DE_BALON, //Defensiva
+            Jugada.ClasificacionJugada.ROBO, //Defensiva
+            Jugada.ClasificacionJugada.DESPEJES, //Defensiva
+            Jugada.ClasificacionJugada. BLOQUEOS,//Defensiva
+        };
+        private static List<Jugada.ClasificacionJugada> falta = new List<Jugada.ClasificacionJugada>
+        {
+            Jugada.ClasificacionJugada.POSICIONES_ADELANTADAS, //Falta
+            Jugada.ClasificacionJugada.PENAL, //Falta
+            Jugada.ClasificacionJugada.TARJETA_AMARILLA,
+            Jugada.ClasificacionJugada.TARJETA_ROJA
+        };
+
         public Form1()
         {
             InitializeComponent();
@@ -47,6 +75,29 @@ namespace ProyectoTecnica
         {
             lblhomescore.Text = Convert.ToString(score_home);
             lblvisitorscore.Text = Convert.ToString(score_visitors);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+   
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((Jugada.Criterio)comboBox1.SelectedValue == Jugada.Criterio.JUGADA_DEFENSIVA)
+            {
+                comboBox2.DataSource = defensiva;
+            }
+            else if ((Jugada.Criterio)comboBox1.SelectedValue == Jugada.Criterio.JUGADA_OFENSIVA)
+            {
+                comboBox2.DataSource = ofensiva;
+            }
+            else if ((Jugada.Criterio)comboBox1.SelectedValue == Jugada.Criterio.FALTA)
+            {
+                comboBox2.DataSource = falta;
+            }
         }
     }
 }

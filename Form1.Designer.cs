@@ -160,6 +160,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Insertar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // radioButton2
             // 
@@ -197,14 +198,11 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "OFENSIVA",
-            "DEFENSIVA",
-            "FALTA"});
             this.comboBox2.Location = new System.Drawing.Point(156, 55);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 2;
+           
             // 
             // label6
             // 
@@ -226,6 +224,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Form1
             // 
