@@ -17,6 +17,7 @@ namespace ProyectoTecnica
         int score_visitors = 0; 
         int score_home = 0;
         List<Jugada> jugadas = new List<Jugada>();
+        string strPath1 = Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory) + "\\futbol.xml";
 
         private static List<Jugada.ClasificacionJugada> ofensiva = new List<Jugada.ClasificacionJugada>
         {
@@ -104,8 +105,8 @@ namespace ProyectoTecnica
             //    dataGridView1.DataSource = jugadas;
             }
             updatescoreboard();
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = jugadas;
+            updateDataGrid();
+           
                 MessageBox.Show("Jugada Insertada");
            
           }
@@ -128,6 +129,37 @@ namespace ProyectoTecnica
             }
         }
 
-   
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                JugadaIO.GuardarJugadas(strPath1, jugadas);
+                MessageBox.Show("Datos Guardados Correctamente");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al guardar el archivo");
+            }
+        }
+        void updateDataGrid()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = jugadas;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                jugadas = JugadaIO.LeerJugadas(strPath1);
+                updateDataGrid();
+                updatescoreboard();
+                MessageBox.Show("Archivo cargado Exitosamente");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al leer el archivo, es posible que este no exista");
+            }
+        }
     }
 }
