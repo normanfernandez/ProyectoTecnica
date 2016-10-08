@@ -17,8 +17,10 @@ namespace ProyectoTecnica
         int score_visitors = 0; 
         int score_home = 0;
         List<Jugada> jugadas = new List<Jugada>();
+
         private static List<Jugada.ClasificacionJugada> ofensiva = new List<Jugada.ClasificacionJugada>
         {
+            Jugada.ClasificacionJugada.GOL, //Ofensiva
             Jugada.ClasificacionJugada.SAQUE_DE_META, //Ofensiva
             Jugada.ClasificacionJugada.TIRO_A_META, //Ofensiva
             Jugada.ClasificacionJugada.PASES, //Ofensiva
@@ -35,7 +37,7 @@ namespace ProyectoTecnica
             Jugada.ClasificacionJugada.ATAJO_DE_BALON, //Defensiva
             Jugada.ClasificacionJugada.ROBO, //Defensiva
             Jugada.ClasificacionJugada.DESPEJES, //Defensiva
-            Jugada.ClasificacionJugada. BLOQUEOS,//Defensiva
+            Jugada.ClasificacionJugada. BLOQUEOS,//Defensiva 
         };
         private static List<Jugada.ClasificacionJugada> falta = new List<Jugada.ClasificacionJugada>
         {
@@ -51,6 +53,7 @@ namespace ProyectoTecnica
             comboBox1.DataSource = Enum.GetValues(typeof(Jugada.Criterio));
             updatescoreboard();
             this.radioButton1.Select();
+            dataGridView1.DataSource = jugadas;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -75,12 +78,36 @@ namespace ProyectoTecnica
         {
             lblhomescore.Text = Convert.ToString(score_home);
             lblvisitorscore.Text = Convert.ToString(score_visitors);
+            
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            
-        }
+
+            if (radioButton1.Checked)
+            {
+                jugadas.Add(new Jugada(Jugada.Equipo.HOME, (Jugada.ClasificacionJugada)comboBox2.SelectedValue, (Jugada.Criterio)comboBox1.SelectedValue));
+                if ((Jugada.ClasificacionJugada)comboBox2.SelectedValue==Jugada.ClasificacionJugada.GOL) 
+                {
+                    score_home++;
+                }
+             //   dataGridView1.DataSource = jugadas;
+            }
+            else if (radioButton2.Checked)
+            {
+                jugadas.Add(new Jugada(Jugada.Equipo.VISITOR, (Jugada.ClasificacionJugada)comboBox2.SelectedValue, (Jugada.Criterio)comboBox1.SelectedValue));
+                if ((Jugada.ClasificacionJugada) comboBox2.SelectedValue == Jugada.ClasificacionJugada.GOL)
+                {
+                    score_visitors++;
+                }
+            //    dataGridView1.DataSource = jugadas;
+            }
+            updatescoreboard();
+            dataGridView1.DataSource = jugadas;
+                MessageBox.Show("Jugada Insertada");
+           
+          }
 
    
 
@@ -99,5 +126,7 @@ namespace ProyectoTecnica
                 comboBox2.DataSource = falta;
             }
         }
+
+   
     }
 }

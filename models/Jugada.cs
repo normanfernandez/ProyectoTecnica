@@ -28,6 +28,7 @@ namespace ProyectoTecnica.models
             DESPEJES, //Defensiva
             BLOQUEOS,//Defensiva
 
+            GOL,
             SAQUE_DE_META, //Ofensiva
             TIRO_A_META, //Ofensiva
             PASES, //Ofensiva
@@ -38,6 +39,7 @@ namespace ProyectoTecnica.models
             TIRO_DE_ESQUINA,
             TIRO_LIBRE_DIRECTO,
             TIRO_LIBRE_INDIRECTO,
+            
             /////////////
 
             POSICIONES_ADELANTADAS, //Falta

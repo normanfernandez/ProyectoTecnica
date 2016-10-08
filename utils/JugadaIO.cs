@@ -12,6 +12,7 @@ namespace ProyectoTecnica.utils
 {
     public static class JugadaIO
     {
+        
         public static void GuardarJugadas(string filename, 
             List<Jugada> jugadas) {
            
@@ -21,6 +22,7 @@ namespace ProyectoTecnica.utils
             serializer.Serialize(writer,jugadas);
             writer.Close();
         }
+ 
         public static List<Jugada> LeerJugadas(string filename) {
             FileStream fs = new FileStream(filename, FileMode.Open);
             XmlSerializer serializer = new XmlSerializer(typeof(List<Jugada>));
