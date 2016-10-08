@@ -104,6 +104,7 @@ namespace ProyectoTecnica
             //    dataGridView1.DataSource = jugadas;
             }
             updatescoreboard();
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = jugadas;
                 MessageBox.Show("Jugada Insertada");
            
