@@ -12,24 +12,29 @@ namespace ProyectoTecnica.utils
 {
     public static class JugadaIO
     {
-        
-        public static void GuardarJugadas(string filename, 
-            List<Jugada> jugadas) {
-           
+
+        public static void GuardarJugadas(string filename,
+            List<Jugada> jugadas)
+        {
+
             Stream fs = new FileStream(filename, FileMode.Create);
             XmlSerializer serializer = new XmlSerializer(jugadas.GetType());
             StreamWriter writer = new StreamWriter(fs, Encoding.Unicode);
-            serializer.Serialize(writer,jugadas);
+            serializer.Serialize(writer, jugadas);
             writer.Close();
+            fs.Close();
         }
- 
-        public static List<Jugada> LeerJugadas(string filename) {
+
+        public static List<Jugada> LeerJugadas(string filename)
+        {
             FileStream fs = new FileStream(filename, FileMode.Open);
             XmlSerializer serializer = new XmlSerializer(typeof(List<Jugada>));
             XmlReader reader = XmlReader.Create(fs);
             List<Jugada> jugadas = (List<Jugada>)serializer.Deserialize(reader);
             reader.Close();
+            fs.Close();
             return jugadas;
+
         }
     }
 }

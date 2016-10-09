@@ -17,8 +17,9 @@ namespace ProyectoTecnica
         int score_visitors = 0; 
         int score_home = 0;
         List<Jugada> jugadas = new List<Jugada>();
-        string strPath1 = Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory) + "\\futbol.xml";
-
+        string directorio = Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments) + "\\ScoreBoard";
+        string appname = "ScoreBoardSaveFile.xml";
+       
         private static List<Jugada.ClasificacionJugada> ofensiva = new List<Jugada.ClasificacionJugada>
         {
             Jugada.ClasificacionJugada.GOL, //Ofensiva
@@ -50,6 +51,7 @@ namespace ProyectoTecnica
 
         public Form1()
         {
+
             InitializeComponent();
             comboBox1.DataSource = Enum.GetValues(typeof(Jugada.Criterio));
             updatescoreboard();
@@ -57,26 +59,22 @@ namespace ProyectoTecnica
             dataGridView1.DataSource = jugadas;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            /*List<Jugada> jugadas = new List<Jugada>();
-            jugadas.Add(new Jugada(Jugada.Equipo.HOME,
-                Jugada.ClasificacionJugada.CENTROS,
-                Jugada.Criterio.JUGADA_OFENSIVA));
-            
-            jugadas.Add(new Jugada(Jugada.Equipo.HOME,
-                Jugada.ClasificacionJugada.TIRO_A_META,
-                Jugada.Criterio.ANOTACION)); 
-            
-            jugadas.Add(new Jugada(Jugada.Equipo.VISITOR,
-                 Jugada.ClasificacionJugada.SAQUE_DE_META,
-                 Jugada.Criterio.JUGADA_OFENSIVA));*/
-
-            //JugadaIO.LeerJugadas("jugadas.xml");
-        }
+    
         void updatescoreboard()
         {
+            score_home = score_visitors = 0;
+            foreach (Jugada jug in  jugadas)
+            {
+                if (jug.clasificacion == Jugada.ClasificacionJugada.GOL && jug.equipo == Jugada.Equipo.HOME)
+                {
+                    score_home++;
+                }
+                if (jug.clasificacion == Jugada.ClasificacionJugada.GOL && jug.equipo == Jugada.Equipo.VISITOR)
+                {
+                    score_visitors++;
+                }
+            }
+
             lblhomescore.Text = Convert.ToString(score_home);
             lblvisitorscore.Text = Convert.ToString(score_visitors);
             
@@ -89,19 +87,19 @@ namespace ProyectoTecnica
             if (radioButton1.Checked)
             {
                 jugadas.Add(new Jugada(Jugada.Equipo.HOME, (Jugada.ClasificacionJugada)comboBox2.SelectedValue, (Jugada.Criterio)comboBox1.SelectedValue));
-                if ((Jugada.ClasificacionJugada)comboBox2.SelectedValue==Jugada.ClasificacionJugada.GOL) 
-                {
-                    score_home++;
-                }
+              //  if ((Jugada.ClasificacionJugada)comboBox2.SelectedValue==Jugada.ClasificacionJugada.GOL) 
+               // {
+               //     score_home++;
+               // }
              //   dataGridView1.DataSource = jugadas;
             }
             else if (radioButton2.Checked)
             {
                 jugadas.Add(new Jugada(Jugada.Equipo.VISITOR, (Jugada.ClasificacionJugada)comboBox2.SelectedValue, (Jugada.Criterio)comboBox1.SelectedValue));
-                if ((Jugada.ClasificacionJugada) comboBox2.SelectedValue == Jugada.ClasificacionJugada.GOL)
-                {
-                    score_visitors++;
-                }
+           //     if ((Jugada.ClasificacionJugada) comboBox2.SelectedValue == Jugada.ClasificacionJugada.GOL)
+            //    {
+            //        score_visitors++;
+             //   }
             //    dataGridView1.DataSource = jugadas;
             }
             updatescoreboard();
@@ -110,8 +108,6 @@ namespace ProyectoTecnica
                 MessageBox.Show("Jugada Insertada");
            
           }
-
-   
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -131,10 +127,10 @@ namespace ProyectoTecnica
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
             try
             {
-                JugadaIO.GuardarJugadas(strPath1, jugadas);
-                MessageBox.Show("Datos Guardados Correctamente");
+                savemyfile();
             }
             catch (Exception)
             {
@@ -151,7 +147,7 @@ namespace ProyectoTecnica
         {
             try
             {
-                jugadas = JugadaIO.LeerJugadas(strPath1);
+                jugadas = JugadaIO.LeerJugadas(System.IO.Path.Combine(directorio,appname));
                 updateDataGrid();
                 updatescoreboard();
                 MessageBox.Show("Archivo cargado Exitosamente");
@@ -159,6 +155,32 @@ namespace ProyectoTecnica
             catch (Exception)
             {
                 MessageBox.Show("Error al leer el archivo, es posible que este no exista");
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("¿Seguro que quiere borrar el registro?","Warning", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                jugadas.Clear();
+                updateDataGrid();
+                updatescoreboard();
+            }
+        }
+        void savemyfile()
+        {
+            string fulldir = System.IO.Path.Combine(directorio, appname);
+            if (System.IO.Directory.Exists(directorio))
+            {
+                JugadaIO.GuardarJugadas(fulldir, jugadas);
+                MessageBox.Show("Datos Guardados Correctamente");
+            }
+            else
+            {
+                System.IO.Directory.CreateDirectory(directorio);
+                savemyfile();
+
             }
         }
     }
