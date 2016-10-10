@@ -17,7 +17,7 @@ namespace ProyectoTecnica
         int score_visitors = 0; 
         int score_home = 0;
         List<Jugada> jugadas = new List<Jugada>();
-        string directorio = Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments) + "\\ScoreBoard";
+        string directorio = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\ScoreBoard";
         string appname = "ScoreBoardSaveFile.xml";
        
         private static List<Jugada.ClasificacionJugada> ofensiva = new List<Jugada.ClasificacionJugada>

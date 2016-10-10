@@ -7,3 +7,12 @@ C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.Prop
 C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.csproj.GenerateResource.Cache
 C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.exe
 C:\Users\OFICINA\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.pdb
+C:\Users\Hector\Documents\GitHub\ProyectoTecnica\bin\Debug\ProyectoTecnica.exe.config
+C:\Users\Hector\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.exe
+C:\Users\Hector\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.pdb
+C:\Users\Hector\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.Form1.resources
+C:\Users\Hector\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.Properties.Resources.resources
+C:\Users\Hector\Documents\GitHub\ProyectoTecnica\obj\Debug\ProyectoTecnica.csproj.GenerateResource.Cache
+C:\Users\Hector\Documents\GitHub\ProyectoTecnica\bin\Debug\ProyectoTecnica.exe
+C:\Users\Hector\Documents\GitHub\ProyectoTecnica\bin\Debug\ProyectoTecnica.pdb
