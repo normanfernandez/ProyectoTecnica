@@ -130,7 +130,9 @@ namespace ProyectoTecnica
             
             try
             {
-                savemyfile();
+                SaveFileDialog savefile = new SaveFileDialog();
+                savefile.ShowDialog();
+                savemyfile(savefile.FileName);
             }
             catch (Exception)
             {
@@ -147,7 +149,10 @@ namespace ProyectoTecnica
         {
             try
             {
-                jugadas = JugadaIO.LeerJugadas(System.IO.Path.Combine(directorio,appname));
+                OpenFileDialog openfile = new OpenFileDialog();
+                openfile.ShowDialog();
+
+                jugadas = JugadaIO.LeerJugadas(openfile.FileName);
                 updateDataGrid();
                 updatescoreboard();
                 MessageBox.Show("Archivo cargado Exitosamente");
@@ -168,18 +173,20 @@ namespace ProyectoTecnica
                 updatescoreboard();
             }
         }
-        void savemyfile()
+        void savemyfile(string path)
         {
-            string fulldir = System.IO.Path.Combine(directorio, appname);
+           
+            //string fulldir = System.IO.Path.Combine(directorio, appname);
             if (System.IO.Directory.Exists(directorio))
             {
-                JugadaIO.GuardarJugadas(fulldir, jugadas);
+
+                JugadaIO.GuardarJugadas(path, jugadas);
                 MessageBox.Show("Datos Guardados Correctamente");
             }
             else
             {
                 System.IO.Directory.CreateDirectory(directorio);
-                savemyfile();
+                savemyfile(path);
 
             }
         }
@@ -217,6 +224,16 @@ namespace ProyectoTecnica
         private void groupBox1_Enter(object sender, EventArgs e)
         {
             
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
